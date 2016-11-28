@@ -1,0 +1,13 @@
+h1 Sign in
+
+= simple_form_for(:session, url: session_path) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :email, required: true
+    = f.input :password, required: true
+
+  .form-actions
+    = f.button :submit, 'Sign in'
+
+= link_to 'Back', users_path

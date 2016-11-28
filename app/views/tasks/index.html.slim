@@ -1,0 +1,28 @@
+.panel.panel-default
+  .panel-heading
+    .row
+      .col-md-1
+        h2 Tasks
+      .col-md-offset-10.col-md-1
+        = link_to 'New Task', new_task_path, class: 'btn btn-primary btn-vertical-align'
+  .panel-body
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th Title
+          th Status
+          th Creator
+          th Owner
+          th
+          th
+      tbody
+        .text-center
+          = paginate @tasks
+        - @tasks.each do |task|
+          tr
+            td = task.title
+            td = task.status
+            td = task.creator
+            td = task.owner
+            td = link_to 'Edit', edit_task_path(task)
+            td = link_to 'Destroy', task, data: { confirm: 'Are you sure?' }, method: :delete
