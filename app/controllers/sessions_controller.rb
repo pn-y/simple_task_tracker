@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
       sign_in user
       redirect_to tasks_url
     else
+      flash.now[:alert] = t('sessions.flash.create_error')
       render 'new'
     end
   end

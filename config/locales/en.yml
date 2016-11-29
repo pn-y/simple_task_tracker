@@ -23,6 +23,7 @@ en:
   sessions:
     flash:
       create: 'Signed in successfully.'
+      create_error: 'Wrong email and/or password.'
       destroy: 'Signed out successfully.'
   users:
     flash:
