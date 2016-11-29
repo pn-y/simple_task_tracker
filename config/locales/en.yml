@@ -20,4 +20,14 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  sessions:
+    flash:
+      create: 'Signed in successfully.'
+      destroy: 'Signed out successfully.'
+  users:
+    flash:
+      create: 'You have signed up successfully.'
+  tasks:
+    flash:
+      create: 'You successfully created the task.'
+      update: 'You successfully updated the task.'
