@@ -1,5 +1,4 @@
 require 'rails_helper'
-include AuthenticationHelper
 
 RSpec.describe TasksController, type: :controller do
   let(:user) { create :user }
