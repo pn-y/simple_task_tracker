@@ -21,8 +21,8 @@
         - @tasks.each do |task|
           tr
             td = task.title
-            td = task.status
-            td = task.creator
-            td = task.owner
+            td = t("task.status.#{task.status}")
+            td = task.creator.email
+            td = task.owner&.email
             td = link_to 'Edit', edit_task_path(task)
             td = link_to 'Destroy', task, data: { confirm: 'Are you sure?' }, method: :delete

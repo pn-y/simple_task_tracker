@@ -99,12 +99,30 @@ RSpec.describe TasksController, type: :controller do
           subject
           expect(Task.find(task.id).title).to eq(new_task_title)
         end
+
+        describe 'status changing' do
+          let(:task_attrs) { { status_event: 'start_task' } }
+
+          it 'changes status' do
+            subject
+            expect(Task.find(task.id).status).to eq('in_progress')
+          end
+        end
       end
 
       context 'with invalid attributes' do
         let(:task_attrs) { { title: '' } }
 
         it { is_expected.to render_template(:edit) }
+
+        describe 'status changing' do
+          let(:task_attrs) { { status_event: 'random string' } }
+
+          it 'do not changes status' do
+            subject
+            expect(Task.find(task.id).status).to eq('open')
+          end
+        end
       end
     end
   end

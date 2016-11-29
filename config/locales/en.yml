@@ -32,3 +32,7 @@ en:
     flash:
       create: 'You successfully created the task.'
       update: 'You successfully updated the task.'
+    status:
+      open: 'Open'
+      in_progress: 'In Progress'
+      done: 'Done'

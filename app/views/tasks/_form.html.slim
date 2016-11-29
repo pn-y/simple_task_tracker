@@ -3,8 +3,13 @@
 
   .form-inputs
     = f.input :title
-    = f.input :status
-    = f.association :owner
+    = f.input :status_event, as: :select,
+                             collection: generate_transitions_collection(f.object),
+                             label_method: :last,
+                             value_method: :first,
+                             selected: f.object.status
+
+    = f.association :owner, label_method: :email
 
   .form-actions
     = f.button :submit
