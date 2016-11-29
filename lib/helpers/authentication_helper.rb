@@ -17,7 +17,7 @@ module AuthenticationHelper
   end
 
   def check_already_singed_in
-    redirect_to tasks_path, notice: t('users.flash.already_signed_in') if current_user
+    redirect_to tasks_url, notice: t('users.flash.already_signed_in') if current_user
   end
 
   def authenticate_user
