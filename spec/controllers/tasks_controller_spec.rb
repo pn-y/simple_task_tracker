@@ -94,7 +94,6 @@ RSpec.describe TasksController, type: :controller do
       before { sign_in(user) }
 
       context 'with valid attributes' do
-
         it { is_expected.to redirect_to(tasks_url) }
 
         it 'updates task' do
