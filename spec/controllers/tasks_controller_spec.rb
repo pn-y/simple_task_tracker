@@ -32,7 +32,7 @@ RSpec.describe TasksController, type: :controller do
   end
 
   describe 'task #create' do
-    subject { post :create, task: task_attrs }
+    subject { post :create, params: { task: task_attrs } }
 
     let(:task_attrs) { attributes_for(:task) }
 
@@ -65,7 +65,7 @@ RSpec.describe TasksController, type: :controller do
   describe 'GET #edit' do
     let(:task) { create :task }
 
-    subject { get :edit, id: task.id }
+    subject { get :edit, params: { id: task.id } }
 
     context 'when no current user' do
       it { is_expected.to redirect_to(new_session_url) }
@@ -83,7 +83,7 @@ RSpec.describe TasksController, type: :controller do
     let(:new_task_title) { 'new title' }
     let(:task_attrs) { { title: new_task_title } }
 
-    subject { patch :update, id: task.id, task: task_attrs }
+    subject { patch :update, params: { task: task_attrs, id: task.id } }
 
     context 'when no current user' do
       it { is_expected.to redirect_to(new_session_url) }
