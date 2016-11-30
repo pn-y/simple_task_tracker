@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :update]
 
   def index
-    @tasks = Task.all.page(params[:page])
+    @tasks = TaskFilterService.new(params, Task.includes(:owner, :creator)).resolve
   end
 
   def new
