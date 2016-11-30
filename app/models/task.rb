@@ -1,6 +1,8 @@
 class Task < ApplicationRecord
   belongs_to :creator, class_name: User
   belongs_to :owner, optional: true, class_name: User
+  belongs_to :creator, class_name: User, optional: false
+  belongs_to :owner, class_name: User, optional: false
 
   validates :title, presence: true
 

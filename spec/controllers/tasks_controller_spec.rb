@@ -32,9 +32,10 @@ RSpec.describe TasksController, type: :controller do
   end
 
   describe 'task #create' do
-    subject { post :create, params: { task: task_attrs } }
+    let(:another_user) { create :user }
+    let(:task_attrs) { attributes_for(:task).merge(owner_id: another_user.id) }
 
-    let(:task_attrs) { attributes_for(:task) }
+    subject { post :create, params: { task: task_attrs } }
 
     context 'when no current user' do
       it { is_expected.to redirect_to(new_session_url) }
