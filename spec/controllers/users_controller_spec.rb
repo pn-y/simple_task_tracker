@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
+  render_views
+
   context 'when user already signed in' do
     let(:user) { create :user }
 

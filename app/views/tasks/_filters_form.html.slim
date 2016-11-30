@@ -7,17 +7,17 @@ h2 Filters
                                               class: 'form-control'
   .form-group.select
     = label_tag 'status', 'Status'
-    = select_tag 'status', options_for_status_select,
+    = select_tag 'status', options_for_status_select(params[:status]),
                            class: 'form-control',
                            prompt: 'Select status'
   .form-group.select
     = label_tag 'creator', 'Creator'
-    = select_tag 'creator', options_for_users_select,
+    = select_tag 'creator', options_for_users_select(params[:creator]),
                             class: 'form-control',
                             prompt: 'Select creator'
   .form-group.select
     = label_tag 'owner', 'Owner'
-    = select_tag 'owner', options_for_users_select,
+    = select_tag 'owner', options_for_users_select(params[:owner]),
                           class: 'form-control',
                           prompt: 'Select owner'
 

@@ -32,7 +32,11 @@ en:
     flash:
       create: 'You successfully created the task.'
       update: 'You successfully updated the task.'
-    status:
-      open: 'Open'
-      in_progress: 'In Progress'
-      done: 'Done'
+  activerecord:
+    state_machines:
+      task:
+        status:
+          states:
+            in_progress: 'In Progress'
+            open: 'Open'
+            done: 'Done'
