@@ -1,10 +1,20 @@
 class Task < ApplicationRecord
-  belongs_to :creator, class_name: User
-  belongs_to :owner, optional: true, class_name: User
+  include PgSearch
+  pg_search_scope :search_by_title, against: :title
+
   belongs_to :creator, class_name: User, optional: false
   belongs_to :owner, class_name: User, optional: false
 
   validates :title, presence: true
+
+  scope :with_status, ->(status) { status.present? && where(status: status) }
+  scope :with_creator, (lambda do |creator|
+    creator.present? &&
+    joins('inner join "users" as "creators" on "tasks"."creator_id" = "creators"."id"').
+    where(creators: { email: creator })
+  end)
+  scope :with_owner, ->(owner) { owner.present? && joins(:owner).where(users: { email: owner }) }
+  scope :with_title, ->(title) { title.present? && search_by_title(title) }
 
   state_machine :status, initial: :open do
     event :start_task do

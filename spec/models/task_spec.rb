@@ -42,4 +42,18 @@ RSpec.describe Task, type: :model do
       end
     end
   end
+
+  describe 'scope' do
+    describe '.with_creator.with_owner' do
+      let(:owner) { create :user }
+      let(:creator) { create :user }
+      let(:task) { create :task, owner: owner, creator: creator }
+
+      subject { described_class.with_creator(creator.email).with_owner(owner.email) }
+
+      it 'properly select record' do
+        is_expected.to eq([task])
+      end
+    end
+  end
 end

@@ -1,0 +1,24 @@
+h2 Filters
+
+= form_tag(tasks_path, method: 'get') do |f|
+  .form-group.string
+    = label_tag 'title', 'Title'
+    = text_field_tag 'title', params[:title], placeholder: 'Full-text search by title',
+                                              class: 'form-control'
+  .form-group.select
+    = label_tag 'status', 'Status'
+    = select_tag 'status', options_for_status_select,
+                           class: 'form-control',
+                           prompt: 'Select status'
+  .form-group.select
+    = label_tag 'creator', 'Creator'
+    = select_tag 'creator', options_for_users_select,
+                            class: 'form-control',
+                            prompt: 'Select creator'
+  .form-group.select
+    = label_tag 'owner', 'Owner'
+    = select_tag 'owner', options_for_users_select,
+                          class: 'form-control',
+                          prompt: 'Select owner'
+
+  = submit_tag 'Filter', name: nil, class: 'btn btn-default'
