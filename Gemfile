@@ -40,6 +40,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'rails-controller-testing'
+  gem 'codeclimate-test-reporter'
 end
 
 group :development do

@@ -1,0 +1,18 @@
+language: ruby
+rvm:
+- 2.3.3
+services:
+- postgresql
+before_script:
+- RAILS_ENV=test bundle exec rake db:create db:migrate
+env:
+  - COVERAGE=true
+addons:
+  postgresql: "9.4"
+deploy:
+  provider: heroku
+  app: boiling-taiga-80164
+  api_key:
+    secure: KDDulQ/ThDcYFw2M8bykrPW+/jix3DLI6TuCA7NHQeQZw+VgCPhfxURkjte4JhVdvyf0/tVfOOptXOxm/hv+wxJbYmBV6FOnj6hkCowQqAir40ztpmC2LSlcQzVj/MeS93ZuQoYvQJ6G4k/TvXHCRGKO9I7zt7HBDDfx13iJdCvsFDtzgqRAzKf38QNbik/1xa7A4Ulpt2DY5qZhUFtO4R3xYFYvUJf1JAbpNvu3YsmI8518L5JiqdkIVTEfOBs3cAIdwkiN0xbQrcgzx7hM5X55GBIDBT/HwEq2/n1UUIx9BSO7Q5TbejJptnsuqUrTr7GIPxyiVFV6Ju+Q1i/P54DT6gst4jnaJ1MKSuIbuIum/eVWiBbSC57+Ao00qu0LG4vL9aPGlI9vYOizlniSeIhF0BhvLJ4uQmn8YkcozW0mBrqevpA6LAcCLKqAL2CPFcb7LD5MslVR+R5DV6z4sk7a2aPtZ5Y2PJEH1ntXhl3OTTz9MmzFetS1LDc2sGBS0PzLEZ2OVTyFadi6h1hWtAt9rzuxN2ELlFgZ9+NrO8rYmwfxarA7uvYYjiwujmUNaKwlkmL1gL/+x25ycKV+5VsZ2BU8gZ5cSUEsaIDx88kPU2CaHr9glTZlgX7O6L3mN5X6p5vXEONEyUjnJPjntRibb1lOACdjtBV4HJWd61g=
+after_success:
+- bundle exec codeclimate-test-reporter
