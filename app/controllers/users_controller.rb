@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     if @user.save
       sign_in(@user)
-      redirect_to tasks_url, notice: t('user.flash.create')
+      redirect_to tasks_url, notice: t('users.flash.create')
     else
       render :new
     end

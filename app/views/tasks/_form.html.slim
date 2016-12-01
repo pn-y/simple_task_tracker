@@ -7,7 +7,8 @@
                              collection: generate_transitions_collection(f.object),
                              label_method: :last,
                              value_method: :first,
-                             selected: f.object.status
+                             selected: f.object.status,
+                             label: Task.human_attribute_name(:event)
 
     = f.association :owner, label_method: :email
 
